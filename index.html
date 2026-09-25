@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ticketing Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <main class="container">
+    <header class="header">
+      <div class="brand-wrap">
+        <div class="brand-icon"><i data-lucide="ticket"></i></div>
+        <div>
+          <h1>Ticketing Dashboard</h1>
+          <p>Track <span>•</span> Manage <span>•</span> Resolve</p>
+        </div>
+      </div>
+      <div class="updated"><i data-lucide="calendar-days"></i><div><small>Last Updated</small><strong id="lastUpdated"></strong></div></div>
+    </header>
+
+    <section class="metrics" id="metrics"></section>
+
+    <div class="logic-note">
+      <i data-lucide="info"></i>
+      <strong>Total Tickets = New Tickets + Pending.</strong>
+      <span>Completed, Development and Dev Support are tracked separately.</span>
+    </div>
+
+    <section class="toolbar">
+      <input id="searchInput" type="search" placeholder="Search team member..." />
+      <select id="categoryFilter"><option value="all">All Categories</option><option value="completed">Completed</option><option value="new">New Tickets</option><option value="development">Development</option><option value="support">Dev Support</option><option value="pending">Pending</option></select>
+      <select id="sortSelect"><option value="name">Sort by Name</option><option value="total">Sort by Total</option><option value="pending">Sort by Pending</option></select>
+      <button class="secondary" id="exportBtn"><i data-lucide="file-down"></i> Export Data</button>
+      <button class="purple" id="snapshotBtn"><i data-lucide="camera"></i> Save Snapshot</button>
+      <button class="secondary" id="addMemberBtn"><i data-lucide="user-plus"></i> Add Team Member</button>
+      <button class="primary" id="addTicketBtn"><i data-lucide="plus"></i> Add Ticket</button>
+    </section>
+
+    <section class="table-card">
+      <table>
+        <thead><tr><th>Name</th><th>Total Tickets</th><th>Completed</th><th>New Tickets</th><th>Development</th><th>Dev Support</th><th>Pending</th><th>Actions</th></tr></thead>
+        <tbody id="teamTable"></tbody>
+      </table>
+    </section>
+
+    <section class="team-summary" id="teamSummary"></section>
+  </main>
+
+  <div class="modal hidden" id="modal">
+    <div class="modal-card"><button class="close" id="closeModal">×</button><h2 id="modalTitle">Add Ticket</h2><form id="modalForm"><div id="formFields"></div><button class="primary full" type="submit">Save</button></form></div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>
